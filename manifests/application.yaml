@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: example-app
-  namespace: argocd
+  namespace: argocd   # This is where the Argo CD Application resource is placed.
 spec:
   project: default
   source:
@@ -11,7 +11,7 @@ spec:
     path: manifests
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: example-app
+    namespace: example-app  # This is where the application resources (Deployments, Services, etc.) will be deployed.
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
